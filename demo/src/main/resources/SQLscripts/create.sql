@@ -10,10 +10,10 @@ CREATE TABLE Person
 );
 
 INSERT INTO Person (fio, gender, h, age, calories)
-values ('Pankratova U.A.', 'WOMAN', 160, 21, 0)
+values ('Pankratova U.A.', 'WOMAN', 160, 21, 0);
 
 SELECT *
 FROM Person;
 
 
-DROP TABLE Person
+DROP TABLE Person;

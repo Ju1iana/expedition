@@ -34,5 +34,5 @@ public class Person {
     private int weight;
 
     @Column(name = "calories")
-    private int calories;
+    private double calories;
 }

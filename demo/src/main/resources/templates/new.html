@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Add person</title>
     <link type="text/css" rel="stylesheet" href="../static/assets/css/style.css" th:href="@{/assets/css/style.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <h1>GoTravel</h1>
 <hr>
-<form th:method="POST" th:action="@{/people}" th:object="${person}">
+<form action="#" id="form1" th:method="POST" th:action="@{/people}" th:object="${person}">
     <label for="FIO">Enter your FIO: </label>
     <input type="text" th:field="*{FIO}" id="fio"/>
     <div style="color:red" th:if="${#fields.hasErrors('FIO')}" th:errors="*{FIO}">Category Error
@@ -22,18 +23,18 @@
 
     <br/>
     <label for="age">Enter your age: </label>
-    <input type="text" th:field="*{age}" id="age"/>
+    <input type="number" th:field="*{age}" id="age"/>
     <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
     <br/>
 
 
     <label for="h">Enter your height: </label>
-    <input type="text" th:field="*{h}" id="h"/>
+    <input type="number" th:field="*{h}" id="h"/>
     <div style="color:red" th:if="${#fields.hasErrors('h')}" th:errors="*{h}">View Error</div>
 
     <br>
     <label for="weight">Enter your weight: </label>
-    <input type="text" th:field="*{weight}" id="weight"/>
+    <input type="number" th:field="*{weight}" id="weight"/>
     <div style="color:red" th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">View Error</div>
 
 
@@ -45,8 +46,47 @@
         </option>
     </select>-->
     <br>
-    <input type="submit" value="Create!"/>
+    <input type="submit" form="form1" value="Create person!"/>
 </form>
+
+<h4>Enter the duration of the hike: <span th:text="${val}"></span></h4>
+<form class="form2" id="form2" action="#" th:action="@{/people/duration}" method="post">
+    <input type="number" name="val" min="0" required>
+    <input type="submit" form="form2" value="Submit">
+
+  <!--  <button type="submit">Update</button>-->
+
+   <!-- <div style="color:red" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">View Error</div>-->
+    <!--<select class="form-control" name="animal" id="animal" th:field="*{nutrition.type_nutrition}">
+        <option value="0"></option>
+        <option th:each="animal: ${animalsForPageOfNutrition}"
+                th:value="${animal.type_nutrition}"
+                th:text="${animal.type_nutrition}">
+        </option>
+    </select>-->
+    <br>
+  <!--  <button onclick="updateCount()">Обновить подсчет</button>
+    <script>
+        function updateCount() {
+            $.ajax({
+                type: "GET",
+                url: "/people/new",
+                success: function(data) {
+                    return data;
+                }
+            });
+        }
+    </script>-->
+
+    <!--<input type="submit" form="form2" value="Submit duration!"/>-->
+
+    <!--<a th:text="${calc.getAmount()}"> All calories </a>-->
+    <div th:each="c : ${calc}">
+        <a th:text="'Total calories - ' + ${c.getAmount()}"></a>
+        </p>
+    </div>
+</form>
+
 <h4>Participants of the campaign:</h4>
 <table class="peopleTable">
     <thead>
@@ -66,13 +106,12 @@
         <td th:text="${person.getFIO()}"></td>
         <td th:text="${person.getPersonGender()}"></td>
         <td th:text="${person.getAge()}"></td>
-        <td th:text="${person.getH()}"></td>
         <td th:text="${person.getWeight()}"></td>
+        <td th:text="${person.getH()}"></td>
         <td th:text="${person.getCalories()}"></td>
     </tr>
     </tbody>
 </table>
-
 
 
 </body>
