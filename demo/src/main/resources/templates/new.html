@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add person</title>
+    <link type="text/css" rel="stylesheet" href="../static/assets/css/style.css" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+<h1>GoTravel</h1>
+<hr>
+<form th:method="POST" th:action="@{/people}" th:object="${person}">
+    <label for="FIO">Enter your FIO: </label>
+    <input type="text" th:field="*{FIO}" id="fio"/>
+    <div style="color:red" th:if="${#fields.hasErrors('FIO')}" th:errors="*{FIO}">Category Error
+    </div>
+    <br/>
+
+    <label for="personGender">Enter your gender (MAN/WOMAN): </label>
+    <input type="text" th:field="*{personGender}" id="personGender"/>
+    <div style="color:red" th:if="${#fields.hasErrors('personGender')}" th:errors="*{personGender}">Category Error
+    </div>
+
+    <br/>
+    <label for="age">Enter your age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+    <br/>
+
+
+    <label for="h">Enter your height: </label>
+    <input type="text" th:field="*{h}" id="h"/>
+    <div style="color:red" th:if="${#fields.hasErrors('h')}" th:errors="*{h}">View Error</div>
+
+    <br>
+    <label for="weight">Enter your weight: </label>
+    <input type="text" th:field="*{weight}" id="weight"/>
+    <div style="color:red" th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">View Error</div>
+
+
+    <!--<select class="form-control" name="animal" id="animal" th:field="*{nutrition.type_nutrition}">
+        <option value="0"></option>
+        <option th:each="animal: ${animalsForPageOfNutrition}"
+                th:value="${animal.type_nutrition}"
+                th:text="${animal.type_nutrition}">
+        </option>
+    </select>-->
+    <br>
+    <input type="submit" value="Create!"/>
+</form>
+<h4>Participants of the campaign:</h4>
+<table class="peopleTable">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>FIO</th>
+        <th>gender</th>
+        <th>age</th>
+        <th>weight</th>
+        <th>height</th>
+        <th>calories</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${peopleAll}">
+        <td th:text="${person.getId()}"></td>
+        <td th:text="${person.getFIO()}"></td>
+        <td th:text="${person.getPersonGender()}"></td>
+        <td th:text="${person.getAge()}"></td>
+        <td th:text="${person.getH()}"></td>
+        <td th:text="${person.getWeight()}"></td>
+        <td th:text="${person.getCalories()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
