@@ -1,3 +1,22 @@
+.container {
+    display: flex;
+    justify-content: space-between; /* Оставляет свободное место справа */
+}
+
+.form-left,
+.form-right {
+    width: calc(50% - 10px); /* Разделяет формы на 2 колонки с небольшим отступом между ними */
+    padding: 10px;
+}
+
+.form-middle,
+.form-bottom {
+    margin-top: 2px; /* Создает отступ между формами */
+    padding: 10px;
+    margin-left:-210px;
+}
+/*
+
 .showPeople{
     width:100%;
     float: left;
@@ -27,8 +46,16 @@
 .form2{
     position: absolute;
     top: 21.5%;
-    left: 50%;
+    left: 35%;
     transform: translate(-50%, -50%);
+}
+
+.form3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+
 }
 
 body {
@@ -41,23 +68,24 @@ body {
     margin-top: -10px;
     color: lightslategray;
 }
-
+*/
 input[type='submit'] {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 15px;
+    padding: 11px;
     text-align: center;
-    text-decoration: none;
+    text-decoration: black;
     display: inline-block;
-    font-size: 13px;
-    margin: 2px 3px;
-    border-radius: 18px;
+    font-size: 10px;
+    margin: 2px 2px;
+    border-radius: 10px;
 }
 
 input[type='submit']:hover {
     opacity: 0.8;
 }
+/*
 
 input[type='reset'] {
     background-color: #4CAF50;
@@ -71,7 +99,6 @@ input[type='reset'] {
     margin: 2px 3px;
     border-radius: 18px;
 }
-
 input[type='reset']:hover {
     opacity: 0.8;
 }
@@ -112,6 +139,7 @@ input[type='reset']:hover {
     border-left: 1.25rem solid transparent;
     border-right: 1.25rem solid transparent;
 }
+*/
 
 .peopleTable {
     border-collapse: collapse;
