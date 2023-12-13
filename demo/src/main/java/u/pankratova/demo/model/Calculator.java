@@ -10,6 +10,18 @@ import java.util.List;
 @NoArgsConstructor
 public class Calculator {
     private static double amount;
+    private static double allCalories;
+    private double betta; // коэффициент вида похода, для пешего 1, для лыжного 1.2, для горного 1.3
+    private double gamma; // коэффициент сложности (категории) похода, 1 для первой категории, 1.1 для второй, 1.2 для третьей и т.д
+
+    public void bToDouble(String b) {
+        switch (b){
+            case "Пеший": setBetta(1);
+            case "Лыжный": setBetta(1.2);
+            case "Горный": setBetta(1.3);
+        }
+    }
+
 
     public void calcDuration(double duration, PersonRepository repository){
         amount = 0;
@@ -29,9 +41,16 @@ public class Calculator {
         amount = v;
     }
 
+    public static double getAllCalories() {
+        return allCalories;
+    }
+
+    public static void setAllCalories(double allCalories) {
+        Calculator.allCalories = allCalories;
+    }
+
     public double calc(Person person, PersonGender pGender) {
         final double A = 1.55; // коэффициент умеренного уровня активности
-        final double a = 1.2; // коэффициент преобразования повседневной траты калорий
         double answer = 0;
 
         switch (pGender) {
@@ -44,6 +63,15 @@ public class Calculator {
                 break;
             }
         }
+        return answer;
+    }
+
+    public double calcAll(double betta, double gamma) {
+        final double a = 1.2; // коэффициент преобразования повседневной траты калорий;
+        double answer = amount * betta * a * gamma;
+        setAllCalories(answer);
+        System.out.println("calcAll()" + "betta: " + betta + "gamma: " + gamma);
+        System.out.println("answer: " + answer + "amount: " + amount);
         return answer;
     }
 }

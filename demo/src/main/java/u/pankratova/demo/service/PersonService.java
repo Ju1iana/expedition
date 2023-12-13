@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import u.pankratova.demo.model.Calculator;
 import u.pankratova.demo.model.Person;
 import u.pankratova.demo.repository.PersonRepository;
-
 import java.util.List;
 
 @Service
@@ -35,6 +34,14 @@ public class PersonService {
 
     public void allCalories(double duration){
         calculator.calcDuration(duration, repository);
+    }
+
+    public void calcAll(double betta, double gamma){
+        calculator.calcAll(betta, gamma);
+    }
+
+    public Calculator getCalculator(){
+        return new Calculator();
     }
 
 }

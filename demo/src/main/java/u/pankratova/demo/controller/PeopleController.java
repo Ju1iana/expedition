@@ -27,7 +27,7 @@ public class PeopleController {
 
     @GetMapping("/new")
     public String newPerson(@ModelAttribute("person") Person person, Model model
-                           /* @ModelAttribute("d") Calculator calculator*/) {
+            /* @ModelAttribute("d") Calculator calculator*/) {
         model.addAttribute("peopleAll", service.index());
         /*model.addAttribute("d", calculator.getAmount());*/
         return "new";
@@ -40,6 +40,7 @@ public class PeopleController {
         if (bindingResult.hasErrors())
             return "people/new";
         person.setCalories(service.personCalories(person));
+
         /*model.addAttribute("calc", service.allCalories(duration));*/
 
         service.add(person);
@@ -65,5 +66,46 @@ public class PeopleController {
     @ModelAttribute("calc")
     public Calculator all() {
         return new Calculator();
+    }
+
+    @PostMapping("/dif")
+    public String calcBetta(@RequestParam(value = "activity") String activity,
+                            @RequestParam(value = "activity2") String activity2, Model model) {
+        /*service.calcBetta(val);
+        service.calcAll(service.getCalculator().getBetta());*/
+
+        double gamma;
+        if (activity2.equals("1")) {
+            gamma = 1.0;
+        } else if (activity2.equals("11")) {
+            gamma = 1.1;
+        } else if (activity2.equals("12")) {
+            gamma = 1.2;
+        } else if (activity2.equals("13")) {
+            gamma = 1.3;
+        } else if (activity2.equals("14")) {
+            gamma = 1.4;
+        } else {
+            gamma = 1.5;
+        }
+
+        double betta;
+        if (activity.equals("пеший")) {
+            betta = 1.0;
+        } else if (activity.equals("лыжный")) {
+            betta = 1.2;
+        } else {
+            betta = 1.3;
+        }
+
+
+        Calculator calculator = new Calculator();
+        calculator.setBetta(betta);
+        calculator.setGamma(gamma);
+
+        model.addAttribute("calculator", calculator);
+
+        service.calcAll(betta, gamma);
+        return "redirect:/people/new";
     }
 }

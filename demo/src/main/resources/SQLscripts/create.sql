@@ -15,5 +15,6 @@ values ('Pankratova U.A.', 'WOMAN', 160, 21, 0);
 SELECT *
 FROM Person;
 
+delete from Person where id = 1;
 
 DROP TABLE Person;
