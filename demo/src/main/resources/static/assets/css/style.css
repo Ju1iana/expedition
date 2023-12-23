@@ -163,3 +163,35 @@ input[type='reset']:hover {
 .peopleTable tr:hover {
     background-color: #f5f5f5;
 }
+
+
+.rationTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.rationTable td, .rationTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.rationTable th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.rationTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.rationTable tr:hover {
+    background-color: #f5f5f5;
+}
+
+.calcRation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:-210px;
+}
+

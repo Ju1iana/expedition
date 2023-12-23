@@ -36,6 +36,10 @@ public class PersonService {
         calculator.calcDuration(duration, repository);
     }
 
+    public void setDuration(int duration){
+        calculator.setDuration(duration);
+    }
+
     public void calcAll(double betta, double gamma){
         calculator.calcAll(betta, gamma);
     }

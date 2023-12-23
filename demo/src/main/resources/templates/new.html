@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add person</title>
+    <title>GoTravel</title>
     <link type="text/css" rel="stylesheet" href="../static/assets/css/style.css" th:href="@{/assets/css/style.css}">
 </head>
 <body>
@@ -87,7 +87,7 @@
 
                 <!--<a th:text="${calc.getAmount()}"> All calories </a>-->
                 <div th:each="c : ${calc}">
-                    <a th:text="'Total calories: ' + ${c.getAmount()}"></a>
+                    <a th:text="'Temporary calorie results: ' + ${c.getAmount()}"></a>
                     </p>
                 </div>
             </form>
@@ -114,10 +114,18 @@
                 </select>
 
                 <input type="submit" form="form3" value="Submit me please">
+
                 <div th:each="c : ${calc}">
                     <a th:text="'Total total calories: ' + ${c.getAllCalories()}"></a>
                     </p>
                 </div>
+            </form>
+            <form th:action="@{/ration}" method="GET">
+                <!--<div th:each="ration : ${rationAll}">
+                    <a th:text="'Total total calories: ' + ${ration.getCalories()}"></a>
+                </div>-->
+                <input align="right" class="calcRation" type="submit" value="Calculate ration">
+                <!--<button type="submit">Refresh</button>-->
             </form>
         </div>
     </div>
@@ -232,6 +240,32 @@
     </div>
 </form>
 </div>-->
+
+<!--
+<h3 align="center">Your ration:</h3>
+<table class="rationTable">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>calories</th>
+        <th>bzhu</th>
+        <th>weight</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="ration : ${rationAll}">
+        <td th:text="${ration.getId()}"></td>
+        <td th:text="${ration.getCalories()}"></td>
+        <td th:text="${ration.getBzhu()}"></td>
+        <td th:text="${ration.getWeight()}"></td>
+        <td th:text="${ration.getDescription()}"></td>
+    </tr>
+    </tbody>
+</table>
+-->
+
 
 <h3 align="center">Participants of the campaign:</h3>
 <table class="peopleTable">

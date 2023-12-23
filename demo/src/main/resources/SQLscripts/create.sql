@@ -24,10 +24,11 @@ INSERT INTO Person (fio, gender, h, age, calories)
 values ('Pankratova U.A.', 'WOMAN', 160, 21, 0);
 
 SELECT *
-FROM Person;
+FROM Ration;
 
 delete
 from Person
-where id = 1;
+where id = 9;
 
 DROP TABLE Person;
+DROP TABLE Ration;

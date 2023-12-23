@@ -7,15 +7,21 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import u.pankratova.demo.model.Calculator;
 import u.pankratova.demo.model.Person;
+import u.pankratova.demo.model.Ration;
 import u.pankratova.demo.service.PersonService;
+import u.pankratova.demo.service.RationService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
     private final PersonService service;
+    private final RationService service1;
 
-    public PeopleController(PersonService service) {
+    public PeopleController(PersonService service, RationService service1) {
         this.service = service;
+        this.service1 = service1;
     }
 
     @GetMapping("/getById{id}")
@@ -51,6 +57,7 @@ public class PeopleController {
     @PostMapping("/duration")
     public String duration(@RequestParam(value = "val") double val) {
         /*double updateValue = service.allCalories(val);*/
+        service.setDuration((int) val);
         service.allCalories(val);
         return "redirect:/people/new";
     }
@@ -103,7 +110,7 @@ public class PeopleController {
         calculator.setBetta(betta);
         calculator.setGamma(gamma);
 
-        model.addAttribute("calculator", calculator);
+       /* model.addAttribute("calculator", calculator); раньше это было. Но я убала и ничего не поменялось. В Thymeleaf "calculator" нет нигде...*/
 
         service.calcAll(betta, gamma);
         return "redirect:/people/new";
