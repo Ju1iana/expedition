@@ -61,8 +61,6 @@ public class Calculator {
         return answer;
     }
 
-
-
     public double calcAll(double betta, double gamma) {
         final double a = 1.2; // коэффициент преобразования повседневной траты калорий;
         double answer = amount * betta * a * gamma;

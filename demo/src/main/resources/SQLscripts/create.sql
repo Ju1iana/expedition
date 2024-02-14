@@ -28,7 +28,7 @@ FROM Ration;
 
 delete
 from Person
-where id = 9;
+where id = 5;
 
 DROP TABLE Person;
 DROP TABLE Ration;

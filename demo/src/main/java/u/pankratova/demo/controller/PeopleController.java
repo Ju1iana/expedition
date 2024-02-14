@@ -7,11 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import u.pankratova.demo.model.Calculator;
 import u.pankratova.demo.model.Person;
-import u.pankratova.demo.model.Ration;
 import u.pankratova.demo.service.PersonService;
 import u.pankratova.demo.service.RationService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/people")
@@ -77,23 +74,30 @@ public class PeopleController {
 
     @PostMapping("/dif")
     public String calcBetta(@RequestParam(value = "activity") String activity,
-                            @RequestParam(value = "activity2") String activity2, Model model) {
+                            @RequestParam(value = "activity2") String activity2) {
         /*service.calcBetta(val);
         service.calcAll(service.getCalculator().getBetta());*/
 
         double gamma;
-        if (activity2.equals("1")) {
-            gamma = 1.0;
-        } else if (activity2.equals("11")) {
-            gamma = 1.1;
-        } else if (activity2.equals("12")) {
-            gamma = 1.2;
-        } else if (activity2.equals("13")) {
-            gamma = 1.3;
-        } else if (activity2.equals("14")) {
-            gamma = 1.4;
-        } else {
-            gamma = 1.5;
+        switch (activity2) {
+            case "1":
+                gamma = 1.0;
+                break;
+            case "11":
+                gamma = 1.1;
+                break;
+            case "12":
+                gamma = 1.2;
+                break;
+            case "13":
+                gamma = 1.3;
+                break;
+            case "14":
+                gamma = 1.4;
+                break;
+            default:
+                gamma = 1.5;
+                break;
         }
 
         double betta;
