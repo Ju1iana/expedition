@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../static/assets/css/style.css" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+
+    <h3 align="center">Your ration:</h3>
+<table class="peopleTable">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>calories</th>
+        <th>bzhu</th>
+        <th>weight</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="ration : ${rationAll}">
+        <td th:text="${ration.getId()}"></td>
+        <td th:text="${ration.getCalories()}"></td>
+        <td th:text="${ration.getBzhu()}"></td>
+        <td th:text="${ration.getWeight()}"></td>
+        <td th:text="${ration.getDescription()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
